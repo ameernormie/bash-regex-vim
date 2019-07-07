@@ -185,3 +185,186 @@ In javascript and perl, you generally don't need to escape metacharacters. To us
 
 - `sed -r`
 - `grep -E`
+
+##### 1.2.3 Character Classes
+
+Character classes are ways of specifiying different characters that can match.
+
+```
+echo 'dog days cats' | sed -E 's/d[ao]/DA/g'
+
+Output: DAg DAys cats
+```
+
+```
+echo 'doooog daaays cats' | sed -E 's/d[ao]/DA/g'
+
+Output: DAooog DAaays cats
+```
+
+**_you can put quantifiers around character classes_**
+
+```
+echo 'doooog daaays cats' | sed -E 's/d[ao]+/DA/g'
+
+Output: DAg DAys cats
+```
+
+**You can also do a negation of character class**
+That means it will match everything outside of that character class
+
+`e.g I want to replace every character other than vowels with *`
+
+```
+echo 'replace all non vowels in this sentance' | sed -E 's/[^aeiou]/*/g'
+
+Output: *e**a*e*a****o***o*e***i****i***e**a**e
+```
+
+###### Ranges to specify character classes
+
+`Remove all digits from stirng`
+
+```
+echo 'hello1233 what9999 834958734' | sed -E 's/[0-9]+//g'
+
+Output: hello what
+```
+
+`Remove all alphabets from string`
+
+```
+echo 'hello1233 what9999 834958734' | sed -E 's/[a-z]+//g'
+
+Output: 1233 9999 834958734
+```
+
+**_You can mix and match ranges_**
+
+```
+echo 'HYIUello1233 what9999 834958734' | sed -E 's/[A-Za-z]+//g'
+
+Output: 1233 9999 834958734
+```
+
+```
+echo 'HYIUello1233__ __ what9999 834958734' | sed -E 's/[A-Za-z_]+//g'
+
+Output: 1233 9999 834958734
+```
+
+**Practice**
+`A password field with minimum 8 characters, it has to container number, a lower case letter, a capital letter and one of a handful of symbols`
+
+```
+Input: pw = 'abc432~A';
+
+/^[\w!@$~]{8,}$/.test(pw) && /[a-z]/.test(pw) && /[A-Z]/.test(pw) && /\d/.test(pw) && /[!~@#$%^&]/.test(pw)
+
+
+Output: true
+```
+
+###### Character class sequences
+
+- `\w` - Word character : `[A-Za-z0-9_]`
+- `\W` - non word character : `[^A-Za-z0-9_]`
+- `\s` - whitespace : `[ \t\r\n\f]`
+- `\S` - non-whitespace : `[^ \t\r\n\f]`
+- `\d` - digit : `[0-9]`
+- `\D` - non-digit : `[^0-9]`
+
+##### 1.2.4 Anchors, groups and sed
+
+###### Anchors
+
+- `^` - anchor at the beginning
+- `$` - anchor to the end
+
+`Following will replace the word 'beans' if it's at the start of string`
+
+```
+echo 'cool beans' | sed -E 's/^beans/BEANS/'
+
+Output: cool beans
+```
+
+`Following will replace the word 'beans' if it's at the end of string`
+
+```
+echo 'cool beans' | sed -E 's/beans$/BEANS/'
+
+Output: cool BEANS
+```
+
+###### Groups
+
+(a|b) - match a or b
+
+- `()` capture group
+- `?:` non capture group
+
+This is the way of telling the engine, either one of these patterns is valid. These patterns can be multiple characters not just the single characters
+
+```
+echo 'beep boop' | sed -E 's/b(ee|oo)p/XXX/g'
+
+Output: XXX XXX
+```
+
+```
+echo 'beep boop' | sed -E 's/b(e|o){2}p/XXX/g'
+
+Output: XXX XXX
+```
+
+```javascript
+var str = 'cool <beans> zzzz';
+var m = /<([^>]+)>/.exec(str);
+
+
+Output m : [ '<beans>',
+  'beans',
+  index: 5,
+  input: 'coll <beans> zzzz',
+  groups: undefined ]
+
+m[1] = 'beans'
+
+```
+
+**\_You can refer to this capture group by **\$1**\_**
+
+```javascript
+"cool <beans> zzz".replace(/<([^>]+)>/, "$1");
+
+Output: "cool beans zzz";
+```
+
+```javascript
+"cool <beans> zzz".replace(/<([^>]+)> (\w+)/g, "$1 :$2");
+
+Output: "cool beans :zzz";
+```
+
+`In sed`
+
+```
+echo 'cool <beans> zzz' | sed -E 's/<([^>]+)>/\1/g'
+
+Output: cool beans zzz
+```
+
+```
+echo 'cool <beans> zzz' | sed -E 's/<([^>]+)>/~~\1~~/g'
+
+Output: cool ~~beans~~ zzz
+```
+
+###### Back References
+
+**_TODO_**
+
+The following commands gives pretty handy reference to Regexp.
+
+`perldoc perlreref`
