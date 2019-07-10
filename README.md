@@ -376,3 +376,110 @@ The following commands gives pretty handy reference to Regexp.
 ### 1.3 Vim
 
 ---
+
+###### Cheat Sheets
+
+- [Vim cheat sheet (fprintf)](https://www.fprintf.net/vimCheatSheet.html)
+- [Yannesposito Blog](http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/)
+
+`Vim is a popular text editor`
+
+#### Why vim?
+
+- edit files on a remote server over ssh
+- works without graphical desktop environment
+- many programming specific features
+- `really fast editing`
+- Easily change indentation
+- Syntax highlighting
+
+#### Alternatives
+
+- nano
+- emacs
+- vi
+
+**_Vim uses ANSI codes to control a cursor and position blocks of text on the screen_**
+
+##### 1.3.1 Using Vim
+
+- Go to `INSERT MODE` by pressing `i`
+- If you want to go back to command mode, hit `esc`
+- To quit, from command mode hit `:q`
+- To save, from command mode hit `:w`
+- If you want to do saving and quitting at the same time, from command mode hit `:wq`
+- If you want to quit without saving, from command mode hit `:q!`
+- **If you already opened vim using `vim` command and you want to open a file,
+  hit `:o` and name of the file from command mode**
+
+##### 1.3.2 Modes and Moving around
+
+You can use the arrow keys to move around.
+
+###### Move around
+
+- `k` to go `up`
+- `j` to go `down`
+- `h` to go `left`
+- `l` to go `right`
+  You can use `k` and `j` to go `up` and `down` respectively from command mode
+- `^` or `0` - Move to the beginning of line
+- `$` - Move to the end on line
+- `gg` - Move to the beginning of the file
+- `G` - Move to the end of file
+
+###### Deleting and Searching
+
+- `x` - Delete highlighted character from command mode
+- `d$` - Delete from current character to the end of line
+- `d0` or `d^` - Delete from current character to the beginning of line
+- `u` - Undo the operation
+- `ctrl + r` - Redo the operation
+
+Combine these commands
+
+- `dj` - delete current and next line
+- `dk` - delete current and previous line
+- `dgg` - delete from current line to beginning of file
+- `2dd` - delete 2 lines (including current)
+- `3dd` - delete 3 lines (including current) and so on
+- `dl` - delete character to the right
+- `dh` - delete character to the left
+
+###### Searching
+
+**You can search for text using Regular Expressions**
+
+From command mode, type in regular expression for the word you want searched like `/word` and press enter. You will be skipped ahead of the next occurence of the word you searched.
+
+**_After searching_**
+
+- `n` - To move to the next occurence
+- `N` - To go to the previous occurence
+
+`If you want to search backwords try using '?word'`
+
+`/[0-9]` search for numbers
+
+###### Combine delete with regexp
+
+`From command mode, press d and then type the pattern. This will delete everything from current position to that pattern. (not including the pattern)`
+
+- `d/PATTERN` - delete to the next match of the pattern
+- `d?PATTERN` - delete to the previous match of the pattern
+- `dn` - delete the next already matched pattern
+- `dN` - delete the previous already matched pattern
+
+###### Jump around
+
+- `f<character>` - jump forward to the character in the line
+- `t<character>` - jump forward to the start of the character in the line
+- `F<character>` - jump backword to the character in the line
+- `T<character>` - jump backword to the start of the character in the line
+
+**Combine with delete**
+
+- `dt<character>` - delete to the character (not including the character)
+- `df<character>` - delete to the character (including the character)
+- `dT<character>` - delete backword to the character (not including the character)
+- `dF<character>` - delete backword to the character (including the character)
