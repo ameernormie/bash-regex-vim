@@ -106,6 +106,8 @@ If I want to add a (w)rite permission to the group.
 
 ### 1.2 Regular Expressions
 
+---
+
 Regex is a pattern matching language. Many programming languages and system tools have a regex engine
 
 **_System tools with regex:_**<br/>
@@ -368,3 +370,9 @@ Output: cool ~~beans~~ zzz
 The following commands gives pretty handy reference to Regexp.
 
 `perldoc perlreref`
+
+<br/><br/><br/>
+
+### 1.3 Vim
+
+---
