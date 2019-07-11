@@ -2,9 +2,9 @@
 
 ### 1.1 Bash
 
-#### Bash Scripts
-
 ---
+
+#### Bash Scripts
 
 whenever you find yourself typing same sequence of commands several times, consider making a script. Just the put the commands you would normally type into a file and add `#!/bin/bash` to the top of the file.
 
@@ -428,7 +428,7 @@ You can use the arrow keys to move around.
 - `gg` - Move to the beginning of the file
 - `G` - Move to the end of file
 
-###### Deleting and Searching
+##### 1.3.3 Deleting and Searching
 
 - `x` - Delete highlighted character from command mode
 - `d$` - Delete from current character to the end of line
@@ -441,6 +441,7 @@ Combine these commands
 - `dj` - delete current and next line
 - `dk` - delete current and previous line
 - `dgg` - delete from current line to beginning of file
+- `dG` - delete from current line to end of file
 - `2dd` - delete 2 lines (including current)
 - `3dd` - delete 3 lines (including current) and so on
 - `dl` - delete character to the right
@@ -483,3 +484,65 @@ From command mode, type in regular expression for the word you want searched lik
 - `df<character>` - delete to the character (including the character)
 - `dT<character>` - delete backword to the character (not including the character)
 - `dF<character>` - delete backword to the character (including the character)
+
+##### 1.3.4 Search and Replace
+
+`:s/PATTERN/REPLACEMENT/FLAGS`
+
+Try these on the line with string cats
+
+**_Line Substitution_**
+
+```
+:s/cat/dog
+:s/cat/dog/g
+:s/cat/dog/i
+```
+
+**_Global Substitution_**
+
+```
+:%/cat/dog
+:%/cat/dog/g
+:%/cat/dog/ig
+```
+
+##### 1.3.4 Visual Select
+
+Press `v` to go into visual select mode. Move the cursor around to select the text.
+
+###### Visual Modes
+
+- `v` - select by characters
+- `V` - select by lines
+- ctrl + `v` - select in a block
+
+Once you've selected the block, you can press:
+
+- `y` - "yank" the text into paste buffer
+- `x` or `d` - delete the selected text
+- `>>` - indent text right by shiftwidth
+- `<<` - indent the text left by shiftwidth
+
+You can push `.` to indent again.
+
+You can also use all the ways of moving around like `0`, `$`, `PATTERN`
+
+**There is also visual line mode**
+You can switch to visual line mode by entering `V`. It will only apply to whole lines.
+
+Following command indents the spaces by two instead of four.
+`s/ / /g`
+
+Whenever you delete something in `Visual` mode, it actually gets into paste buffer. If you navigate to anywhere else in the file and press `p`, it will get pasted. If you want to copy without deleting, Press `y` and paste with `p`.
+
+##### 1.3.4 Paste buffer and Insert modes
+
+There are more ways to insert mode that just `i`.
+
+- `o` - Goto insert mode, inserting a line below the current line
+- `O` - Goto insert mode, inserting a line above the current line
+- `a` - Goto insert mode, at one character to the right
+- `A` - Goto insert mode, at the end of the current line
+- `J` - Move the next line to the end of the current line
+- `(backtick) + .` - jump to the last edit
