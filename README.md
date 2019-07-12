@@ -4,7 +4,7 @@
 
 ---
 
-#### Bash Scripts
+#### 1.1.1 Bash Scripts
 
 whenever you find yourself typing same sequence of commands several times, consider making a script. Just the put the commands you would normally type into a file and add `#!/bin/bash` to the top of the file.
 
@@ -63,9 +63,7 @@ echo $INPUT
 
 Whatever input you'll give will be printed out to the terminal as a result of the above script. <br/><br/><br/>
 
-#### Permissions
-
----
+#### 1.1.2 Permissions
 
 ###### There are three kinds of permissons for files and directories:
 
@@ -101,6 +99,48 @@ A '-' in place of one of those letters mean the permission is not available.
 If I want to add a (w)rite permission to the group.
 `chmod g+w <file>`. (Grant the permission)
 `chmod g-w <file>`. (Revoke the permission)
+
+#### 1.1.3 Exit Codes, Operators and Subshells
+
+If you run a command and it's successfull, the exit code will be 0.
+
+You can read out what the exit code it by `$?`
+
+```
+echo $?
+
+```
+
+###### If-else
+
+```
+if test -f cool.txt; then echo true; else echo false; fi
+```
+
+`test -f` runs the while loop silently
+
+#### 1.1.4 Job Control
+
+Bash is built to handle multiple programs in parallel
+
+###### Put process in background
+
+- `ctrl + z` puts the process in background, when you want to resume that process type `fg`
+- type `jobs` to see what jobs are running. If you type `fg` it'll put the last job in the foreground.
+- If you want to specify the job, give it an argument like `fg %1` to specify job
+- You can also use the command `kill` to send the signal to program to end like this `kill %1`. Sometimes this command won't end the program, because some programs don't accept end signal.
+- End Forcefully - `kill -9 %1`
+- `kill %%` kills last job
+- All signals are like `SIG<name>`
+- Another way to put program to background is to use `&:`
+
+###### pgrep
+
+Search for a process by it's name
+`pgrep <name> -lf (additional info)`
+
+**Kill by id**
+`kill <id>`
 
 <br/><br/><br/>
 
@@ -546,3 +586,7 @@ There are more ways to insert mode that just `i`.
 - `A` - Goto insert mode, at the end of the current line
 - `J` - Move the next line to the end of the current line
 - `(backtick) + .` - jump to the last edit
+
+**_If you really really like vim, you can make your terminal follow the rules of vim_**
+From you terminal, run
+`set -o vi`
