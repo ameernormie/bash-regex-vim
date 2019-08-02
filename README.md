@@ -4,7 +4,54 @@
 
 ---
 
-#### 1.1.1 Bash Scripts
+#### 1.1.1 File Management
+
+###### Copy File
+
+`cp <source> <destination>`
+
+source and destination can be directories.
+
+Recursively:
+`cp -R <source> <destination>`
+
+###### Move command
+
+mv command is used to rename and overwrite files in directories.
+To rename a file, set the first argument to the original file name and
+second argument to the new file name or destination directory.
+
+You can also rename directories.
+
+`mv <source> <destination>`
+
+###### Wild cards
+
+    cat *.txt ===> cat file1.txt file2.txt ....
+    cat b{ee,oo}p.txt ===> cat beep.txt book.txt
+    mv b{ee,oo}p.txt ===> mv beep.txt boop.txt
+
+###### Delete file:
+
+`rm <file-name>`
+
+Delete directory
+`rm -r <dir-name>`
+
+###### Absolute and relative paths
+
+`.` and `..` are relative paths.
+
+paths starting with `/` are absolute paths
+
+###### Writing and reading file
+
+`echo hello > <file-name> (saves the text hello in file name)`
+
+Append to a file:
+`echo world >> <file-name>`
+
+#### 1.1.2 Bash Scripts
 
 whenever you find yourself typing same sequence of commands several times, consider making a script. Just the put the commands you would normally type into a file and add `#!/bin/bash` to the top of the file.
 
@@ -63,7 +110,7 @@ echo $INPUT
 
 Whatever input you'll give will be printed out to the terminal as a result of the above script. <br/><br/><br/>
 
-#### 1.1.2 Permissions
+#### 1.1.3 Permissions
 
 ###### There are three kinds of permissons for files and directories:
 
@@ -100,7 +147,7 @@ If I want to add a (w)rite permission to the group.
 `chmod g+w <file>`. (Grant the permission)
 `chmod g-w <file>`. (Revoke the permission)
 
-#### 1.1.3 Exit Codes, Operators and Subshells
+#### 1.1.4 Exit Codes, Operators and Subshells
 
 If you run a command and it's successfull, the exit code will be 0.
 
@@ -119,7 +166,7 @@ if test -f cool.txt; then echo true; else echo false; fi
 
 `test -f` runs the while loop silently
 
-#### 1.1.4 Job Control
+#### 1.1.5 Job Control
 
 Bash is built to handle multiple programs in parallel
 
