@@ -1,10 +1,10 @@
 ## Learning Basics of Bash, Vim & Regex
 
-### 1.1 Bash
+## 1.1 Bash
 
 ---
 
-#### 1.1.1 File Management
+### 1.1.1 File Management
 
 ###### Copy File
 
@@ -51,7 +51,7 @@ paths starting with `/` are absolute paths
 Append to a file:
 `echo world >> <file-name>`
 
-#### 1.1.2 Bash Scripts
+### 1.1.2 Bash Scripts
 
 whenever you find yourself typing same sequence of commands several times, consider making a script. Just the put the commands you would normally type into a file and add `#!/bin/bash` to the top of the file.
 
@@ -110,7 +110,7 @@ echo $INPUT
 
 Whatever input you'll give will be printed out to the terminal as a result of the above script. <br/><br/><br/>
 
-#### 1.1.3 Permissions
+### 1.1.3 Permissions
 
 ###### There are three kinds of permissons for files and directories:
 
@@ -147,7 +147,7 @@ If I want to add a (w)rite permission to the group.
 `chmod g+w <file>`. (Grant the permission)
 `chmod g-w <file>`. (Revoke the permission)
 
-#### 1.1.4 Exit Codes, Operators and Subshells
+### 1.1.4 Exit Codes, Operators and Subshells
 
 If you run a command and it's successfull, the exit code will be 0.
 
@@ -166,7 +166,7 @@ if test -f cool.txt; then echo true; else echo false; fi
 
 `test -f` runs the while loop silently
 
-#### 1.1.5 Job Control
+### 1.1.5 Job Control
 
 Bash is built to handle multiple programs in parallel
 
@@ -191,7 +191,7 @@ Search for a process by it's name
 
 <br/><br/><br/>
 
-### 1.2 Regular Expressions
+## 1.2 Regular Expressions
 
 ---
 
@@ -213,7 +213,7 @@ Regex is a pattern matching language. Many programming languages and system tool
 - re.test(str)
 - re.exec(str)
 
-##### 1.2.1 Flags
+### 1.2.1 Flags
 
 ```
 /PATTERN/FLAGS
@@ -225,7 +225,7 @@ s/PATTERN/REP/FLAGS
 - `m` - treat string as multiple lines
 - `s` - treat string as single line
 
-##### 1.2.2 Meta Characters
+### 1.2.2 Meta Characters
 
 - `.` - matches any character
 - `?` - zero or one time
@@ -275,7 +275,7 @@ In javascript and perl, you generally don't need to escape metacharacters. To us
 - `sed -r`
 - `grep -E`
 
-##### 1.2.3 Character Classes
+### 1.2.3 Character Classes
 
 Character classes are ways of specifiying different characters that can match.
 
@@ -363,7 +363,7 @@ Output: true
 - `\d` - digit : `[0-9]`
 - `\D` - non-digit : `[^0-9]`
 
-##### 1.2.4 Anchors, groups and sed
+### 1.2.4 Anchors, groups and sed
 
 ###### Anchors
 
@@ -460,7 +460,7 @@ The following commands gives pretty handy reference to Regexp.
 
 <br/><br/><br/>
 
-### 1.3 Vim
+## 1.3 Vim
 
 ---
 
@@ -488,7 +488,7 @@ The following commands gives pretty handy reference to Regexp.
 
 **_Vim uses ANSI codes to control a cursor and position blocks of text on the screen_**
 
-##### 1.3.1 Using Vim
+### 1.3.1 Using Vim
 
 - Go to `INSERT MODE` by pressing `i`
 - If you want to go back to command mode, hit `esc`
@@ -499,7 +499,7 @@ The following commands gives pretty handy reference to Regexp.
 - **If you already opened vim using `vim` command and you want to open a file,
   hit `:o` and name of the file from command mode**
 
-##### 1.3.2 Modes and Moving around
+### 1.3.2 Modes and Moving around
 
 You can use the arrow keys to move around.
 
@@ -515,7 +515,7 @@ You can use the arrow keys to move around.
 - `gg` - Move to the beginning of the file
 - `G` - Move to the end of file
 
-##### 1.3.3 Deleting and Searching
+### 1.3.3 Deleting and Searching
 
 - `x` - Delete highlighted character from command mode
 - `d$` - Delete from current character to the end of line
@@ -572,7 +572,7 @@ From command mode, type in regular expression for the word you want searched lik
 - `dT<character>` - delete backword to the character (not including the character)
 - `dF<character>` - delete backword to the character (including the character)
 
-##### 1.3.4 Search and Replace
+### 1.3.4 Search and Replace
 
 `:s/PATTERN/REPLACEMENT/FLAGS`
 
@@ -594,7 +594,7 @@ Try these on the line with string cats
 :%/cat/dog/ig
 ```
 
-##### 1.3.4 Visual Select
+### 1.3.4 Visual Select
 
 Press `v` to go into visual select mode. Move the cursor around to select the text.
 
@@ -623,7 +623,7 @@ Following command indents the spaces by two instead of four.
 
 Whenever you delete something in `Visual` mode, it actually gets into paste buffer. If you navigate to anywhere else in the file and press `p`, it will get pasted. If you want to copy without deleting, Press `y` and paste with `p`.
 
-##### 1.3.4 Paste buffer and Insert modes
+### 1.3.4 Paste buffer and Insert modes
 
 There are more ways to insert mode that just `i`.
 
