@@ -6,7 +6,7 @@
 
 ### 1.1.1 File Management
 
-###### Copy File
+**Copy File**
 
 `cp <source> <destination>`
 
@@ -15,7 +15,7 @@ source and destination can be directories.
 Recursively:
 `cp -R <source> <destination>`
 
-###### Move command
+**Move command**
 
 mv command is used to rename and overwrite files in directories.
 To rename a file, set the first argument to the original file name and
@@ -25,26 +25,26 @@ You can also rename directories.
 
 `mv <source> <destination>`
 
-###### Wild cards
+**Wild cards**
 
     cat *.txt ===> cat file1.txt file2.txt ....
     cat b{ee,oo}p.txt ===> cat beep.txt book.txt
     mv b{ee,oo}p.txt ===> mv beep.txt boop.txt
 
-###### Delete file:
+**Delete file:**
 
 `rm <file-name>`
 
 Delete directory
 `rm -r <dir-name>`
 
-###### Absolute and relative paths
+**Absolute and relative paths**
 
 `.` and `..` are relative paths.
 
 paths starting with `/` are absolute paths
 
-###### Writing and reading file
+**Writing and reading file**
 
 `echo hello > <file-name> (saves the text hello in file name)`
 
